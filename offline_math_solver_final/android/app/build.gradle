@@ -9,6 +9,15 @@ android {
     namespace = "com.mostafa.offlinemathsolver"
     compileSdk = flutter.compileSdkVersion
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     defaultConfig {
         applicationId = "com.mostafa.offlinemathsolver"
         minSdk = 24
