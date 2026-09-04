@@ -342,7 +342,7 @@ class _AnswerCard extends StatelessWidget {
               style: TextStyle(
                 fontFamily: 'monospace',
                 fontSize: solution.success ? 24 : 15,
-                fontWeight: FontWeight.w750,
+                fontWeight: FontWeight.w700,
                 height: 1.5,
                 color: solution.success
                     ? const Color(0xFF17202A)

@@ -64,7 +64,7 @@ class _StepCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 13,
-                    fontWeight: FontWeight.w650,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -101,7 +101,7 @@ class _EquationBox extends StatelessWidget {
         style: const TextStyle(
           fontFamily: 'monospace',
           fontSize: 17,
-          fontWeight: FontWeight.w650,
+          fontWeight: FontWeight.w700,
           height: 1.5,
         ),
       ),
