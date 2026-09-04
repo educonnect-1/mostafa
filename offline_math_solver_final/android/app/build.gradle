@@ -30,6 +30,9 @@ android {
         release {
             minifyEnabled false
             shrinkResources false
+
+            // Sign the release APK so it can be installed for testing
+            signingConfig signingConfigs.debug
         }
     }
 }
