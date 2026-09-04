@@ -1,0 +1,26 @@
+workflows:
+  android-release:
+    name: MathSolve Android Release
+    instance_type: linux_x2
+    max_build_duration: 30
+    environment:
+      flutter: stable
+      groups: []
+      vars:
+        PACKAGE_NAME: com.mostafa.offlinemathsolver
+    scripts:
+      - name: Prepare Android platform files if missing
+        script: |
+          if [ ! -f android/gradlew ]; then
+            flutter create --platforms=android .
+          fi
+      - name: Get packages
+        script: flutter pub get
+      - name: Static analysis
+        script: flutter analyze
+      - name: Unit tests
+        script: flutter test
+      - name: Build release APK
+        script: flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
