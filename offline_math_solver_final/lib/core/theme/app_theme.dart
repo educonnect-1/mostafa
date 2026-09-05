@@ -1,100 +1,38 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static ThemeData light() {
-    const ink = Color(0xFF17202A);
-    const muted = Color(0xFF68727D);
-    const accent = Color(0xFF2457A6);
-    const surface = Color(0xFFFFFFFF);
-    const background = Color(0xFFF5F7FA);
-
-    final scheme = ColorScheme.fromSeed(
-      seedColor: accent,
-      brightness: Brightness.light,
-    );
-
+  static ThemeData get light {
+    const ink = Color(0xFF1F252B);
+    const accent = Color(0xFF315C60);
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      scaffoldBackgroundColor: background,
-      colorScheme: scheme.copyWith(
-        primary: accent,
-        onPrimary: Colors.white,
-        surface: surface,
-        onSurface: ink,
-      ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: background,
-        foregroundColor: ink,
-        elevation: 0,
-        centerTitle: false,
-      ),
+      scaffoldBackgroundColor: const Color(0xFFF6F6F3),
+      colorScheme: ColorScheme.fromSeed(seedColor: accent, brightness: Brightness.light),
       textTheme: const TextTheme(
-        headlineMedium: TextStyle(
-          color: ink,
-          fontSize: 30,
-          fontWeight: FontWeight.w800,
-          letterSpacing: -0.7,
-        ),
-        titleLarge: TextStyle(
-          color: ink,
-          fontSize: 21,
-          fontWeight: FontWeight.w800,
-        ),
-        titleMedium: TextStyle(
-          color: ink,
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-        ),
-        bodyLarge: TextStyle(color: ink, fontSize: 16, height: 1.45),
-        bodyMedium: TextStyle(color: muted, fontSize: 14, height: 1.4),
+        headlineLarge: TextStyle(fontWeight: FontWeight.w800, color: ink),
+        headlineMedium: TextStyle(fontWeight: FontWeight.w800, color: ink),
+        titleLarge: TextStyle(fontWeight: FontWeight.w700, color: ink),
+        titleMedium: TextStyle(fontWeight: FontWeight.w700, color: ink),
+        bodyLarge: TextStyle(color: ink),
+        bodyMedium: TextStyle(color: Color(0xFF596169)),
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         filled: true,
-        fillColor: surface,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
+        fillColor: Colors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: Color(0xFFDDE2E8)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(color: Color(0xFFD7DBDE)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: Color(0xFFDDE2E8)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: accent, width: 1.5),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(color: Color(0xFFD7DBDE)),
         ),
       ),
-      cardTheme: CardThemeData(
-        color: surface,
+      cardTheme: const CardThemeData(
+        color: Colors.white,
         elevation: 0,
         margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(color: Color(0xFFE1E5EA)),
-        ),
-      ),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          minimumSize: const Size.fromHeight(52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          textStyle: const TextStyle(fontWeight: FontWeight.w700),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          minimumSize: const Size.fromHeight(52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          side: const BorderSide(color: Color(0xFFD2D8DF)),
-        ),
       ),
     );
   }
