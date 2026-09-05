@@ -1,26 +1,45 @@
 workflows:
-  android-release:
-    name: MathSolve Android Release
-    instance_type: linux_x2
-    max_build_duration: 30
+  android-build:
+    name: Build Android APK & AAB
+    working_directory: offline_math_solver_final # مهم جداً لأن مشروعك داخل هذا المجلد
+    instance_type: mac_mini_m2 # أو linux، لكن m2 أسرع وأفضل لـ Flutter
     environment:
       flutter: stable
-      groups: []
       vars:
-        PACKAGE_NAME: com.mostafa.offlinemathsolver
+        # هذه المتغيرات سيتم جلبها من لوحة تحكم Codemagic
+        SUPABASE_URL: ${SUPABASE_URL}
+        SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
     scripts:
-      - name: Prepare Android platform files if missing
+      - name: Set up local.properties
         script: |
-          if [ ! -f android/gradlew ]; then
-            flutter create --platforms=android .
-          fi
-      - name: Get packages
-        script: flutter pub get
-      - name: Static analysis
-        script: flutter analyze
-      - name: Unit tests
-        script: flutter test
-      - name: Build release APK
-        script: flutter build apk --release
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/offline_math_solver_final/android/local.properties"
+      
+      - name: Get Flutter dependencies
+        script: |
+          flutter pub get
+      
+      - name: Build Android APK (Release)
+        script: |
+          flutter build apk --release \
+            --dart-define=SUPABASE_URL=$SUPABASE_URL \
+            --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+      
+      - name: Build Android App Bundle (AAB) for Play Store
+        script: |
+          flutter build appbundle --release \
+            --dart-define=SUPABASE_URL=$SUPABASE_URL \
+            --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+            
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - offline_math_solver_final/build/app/outputs/flutter-apk/app-release.apk
+      - offline_math_solver_final/build/app/outputs/bundle/release/app-release.aab
+      - offline_math_solver_final/build/reports/*.xml
+      
+    publishing:
+      # يمكنك تفعيل هذا الجزء لاحقاً لرفع التطبيق تلقائياً
+      # email:
+      #   recipients:
+      #     - mostafa@example.com
+      #   notify:
+      #     success: true
+      #     failure: true
