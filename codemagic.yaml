@@ -1,0 +1,24 @@
+workflows:
+  android-build:
+    name: Android Release Build
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      vars:
+        # سيتم تمرير هذه القيم بأمان من لوحة تحكم Codemagic
+        SUPABASE_URL: ${SUPABASE_URL}
+        SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+    scripts:
+      - name: Set up local properties
+        script: |
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build Android APK & App Bundle
+        script: |
+          flutter build apk --release --dart-define=SUPABASE_URL=$SUPABASE_URL --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+          flutter build appbundle --release --dart-define=SUPABASE_URL=$SUPABASE_URL --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab

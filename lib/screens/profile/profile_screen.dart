@@ -28,9 +28,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         const SizedBox(height: 12),
         TextField(controller: bio, maxLines: 4, decoration: const InputDecoration(labelText: 'Bio')),
         const SizedBox(height: 16),
-        FilledButton(onPressed: () async {
+                FilledButton(onPressed: () async {
           await ProfileRepository().update(fullName: name.text.trim(), bio: bio.text.trim());
-          if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Profile saved.')));
+          
+          // استخدم context.mounted بدلاً من mounted
+          if (!context.mounted) return; 
+          
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Profile saved.')));
         }, child: const Text('Save')),
         const SizedBox(height: 12),
         OutlinedButton(onPressed: () => AuthService().signOut(), child: const Text('Sign out')),

@@ -45,7 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           TextField(controller: password, obscureText: true, decoration: const InputDecoration(labelText: 'Password')),
           const SizedBox(height: 12),
           DropdownButtonFormField<String>(
-            value: role,
+            initialValue: role,
             items: const [
               DropdownMenuItem(value: 'student', child: Text('Student')),
               DropdownMenuItem(value: 'teacher', child: Text('Teacher')),
