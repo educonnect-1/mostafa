@@ -129,8 +129,8 @@ class MathSolver {
   }
 
   Solution _linearSolution(String input, _Polynomial p, String x) {
-    final a = p.c.length > 1 ? p.c[1] : 0;
-    final b = p.c[0];
+    final double a = (p.c.length > 1 ? p.c[1] : 0).toDouble();
+    final double b = p.c[0].toDouble();
     if (a.abs() < _eps) return const Solution(success: false, answer: '', error: 'No unique solution.');
     final root = -b / a;
     final steps = <TransformationStep>[
@@ -153,7 +153,9 @@ class MathSolver {
   }
 
   Solution _quadraticSolution(String input, _Polynomial p, String x) {
-    final a = p.c[2], b = p.c[1], c = p.c[0];
+    final double a = p.c[2].toDouble();
+    final double b = p.c[1].toDouble();
+    final double c = p.c[0].toDouble();
     final d = b * b - 4 * a * c;
     final standard = '${_term(a, '$x²')} ${_signedTerm(b, x)} ${_signedNumber(c)} = 0';
     if (d < -_eps) {
