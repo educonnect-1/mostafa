@@ -6,12 +6,13 @@ A production-oriented Flutter + Supabase learning platform.
 Flutter owns UI/state. Repositories own Supabase access. Server-side functions own privileged operations such as signed R2 URLs.
 
 ## Required environment
-Pass these at build/run time:
+Copy `.env.example` to `.env` in the project root and fill in your project's values:
 - SUPABASE_URL
 - SUPABASE_ANON_KEY
 
-Example:
-flutter run --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...
+`.env` is gitignored and is bundled into the app at build time via `flutter_dotenv`, so it must exist before you run `flutter pub get` / `flutter run` / `flutter build`.
+
+CI builds (see `codemagic.yaml`) instead write `.env` from secret environment variables at build time, so no secrets are ever committed. Compile-time `--dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...` values are still honored as a fallback if `.env` isn't present.
 
 Never put a Supabase service-role key, Cloudflare R2 secret, or other private credential in the Flutter app.
 

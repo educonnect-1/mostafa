@@ -8,6 +8,10 @@ workflows:
         SUPABASE_URL: ${SUPABASE_URL}
         SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
     scripts:
+      - name: Write .env
+        script: |
+          echo "SUPABASE_URL=$SUPABASE_URL" > .env
+          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> .env
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build Android APK
