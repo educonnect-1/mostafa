@@ -47,5 +47,4 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 
-# Environment variables (contains Supabase credentials) - never commit this
-.env
+
