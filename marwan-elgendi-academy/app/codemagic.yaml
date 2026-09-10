@@ -1,0 +1,63 @@
+workflows:
+  android-workflow:
+    name: Marwan Elgendi Academy — Android
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+      groups:
+        - academy_secrets   # SUPABASE_URL, SUPABASE_ANON_KEY, JITSI_SERVER_URL,
+                             # + Android keystore vars, set in Codemagic UI
+    scripts:
+      - name: Write .env from Codemagic environment group
+        script: |
+          cat > .env <<EOF
+          SUPABASE_URL=$SUPABASE_URL
+          SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+          JITSI_SERVER_URL=$JITSI_SERVER_URL
+          EOF
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Analyze
+        script: flutter analyze
+      - name: Run tests
+        script: flutter test
+      - name: Build Android App Bundle
+        script: flutter build appbundle --release
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/*.apk
+      - flutter_drive.log
+
+  ios-workflow:
+    name: Marwan Elgendi Academy — iOS
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      groups:
+        - academy_secrets
+    scripts:
+      - name: Write .env from Codemagic environment group
+        script: |
+          cat > .env <<EOF
+          SUPABASE_URL=$SUPABASE_URL
+          SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+          JITSI_SERVER_URL=$JITSI_SERVER_URL
+          EOF
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Install CocoaPods
+        script: |
+          cd ios && pod install
+      - name: Analyze
+        script: flutter analyze
+      - name: Run tests
+        script: flutter test
+      - name: Build iOS (no codesign)
+        script: flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/iphoneos/*.app
+      - flutter_drive.log

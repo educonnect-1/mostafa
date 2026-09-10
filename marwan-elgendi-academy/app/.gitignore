@@ -1,0 +1,36 @@
+# Secrets — never commit
+.env
+
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# Android
+android/.gradle
+android/app/debug
+android/app/profile
+android/app/release
+android/key.properties
+**/*.jks
+**/*.keystore
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+**/*.mode1v3
+**/*.mode2v3
+**/*.pbxuser
+**/*.perspectivev3
+**/xcuserdata/
+
+# IDE
+.idea/
+.vscode/
+*.iml
