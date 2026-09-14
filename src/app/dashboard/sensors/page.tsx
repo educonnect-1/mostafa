@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getLatestSensorReading, getSensorHistory, subscribeToLatestReading, type SensorReading } from '@/lib/firestore';
+import { getLatestSensorReading, getSensorHistory, subscribeToLatestReading } from '@/lib/firestore';
+import type { SensorReading } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton } from '@/components/ui';
 import { Droplets, Thermometer, Wind, Tank, Gauge, Sun, Wifi, WifiOff, RefreshCw } from 'lucide-react';
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
