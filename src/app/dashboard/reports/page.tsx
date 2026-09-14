@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getIrrigationLogs, getLatestSensorReading, getLatestAIAnalysis, type IrrigationLog, type SensorReading, type AIAnalysis } from '@/lib/firestore';
+import { getIrrigationLogs, getLatestSensorReading, getLatestAIAnalysis } from '@/lib/firestore';
+import type { IrrigationLog, SensorReading, AIAnalysis } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton, Button } from '@/components/ui';
 import { Droplets, Thermometer, Leaf, TrendingUp, FileText, Calendar, BarChart3 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
