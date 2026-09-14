@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getZones, type Zone } from '@/lib/firestore';
+import { getZones } from '@/lib/firestore';
+import type { Zone } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton } from '@/components/ui';
 import { MapPin, Droplets, Thermometer, Power, Wifi, WifiOff, Leaf } from 'lucide-react';
 import Link from 'next/link';
