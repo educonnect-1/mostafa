@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getLatestAIAnalysis, getAIAnalysisHistory, type AIAnalysis } from '@/lib/firestore';
+import { getLatestAIAnalysis, getAIAnalysisHistory } from '@/lib/firestore';
+import type { AIAnalysis } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton, Button } from '@/components/ui';
 import { Brain, TrendingUp, AlertCircle, CheckCircle, Droplets, Thermometer, RefreshCw } from 'lucide-react';
 
