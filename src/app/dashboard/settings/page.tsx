@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getSystemConfig, updateSystemConfig, initializeSystemConfig, type SystemConfig } from '@/lib/firestore';
+import { getSystemConfig, updateSystemConfig, initializeSystemConfig } from '@/lib/firestore';
+import type { SystemConfig } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton, Button, Input, Label, Select } from '@/components/ui';
 import { Settings as SettingsIcon, Brain, Cpu, Clock, ToggleLeft, AlertCircle } from 'lucide-react';
 
