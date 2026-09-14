@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getFarm, getZones, getLatestSensorReading, getLatestAIAnalysis, subscribeToLatestReading, type SensorReading, type AIAnalysis, type Zone } from '@/lib/firestore';
+import { getFarm, getZones, getLatestSensorReading, getLatestAIAnalysis, subscribeToLatestReading } from '@/lib/firestore';
+import type { SensorReading, AIAnalysis, Zone } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton } from '@/components/ui';
 import { Droplets, Thermometer, Wind, Tank, Power, Leaf, TrendingUp, AlertCircle } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
