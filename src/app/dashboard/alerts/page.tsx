@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getAlerts, resolveAlert, type Alert } from '@/lib/firestore';
+import { getAlerts, resolveAlert } from '@/lib/firestore';
+import type { Alert } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton, Button } from '@/components/ui';
 import { AlertTriangle, AlertCircle, Info, CheckCircle, X, Filter } from 'lucide-react';
 
