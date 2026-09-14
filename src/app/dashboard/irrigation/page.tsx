@@ -33,7 +33,7 @@ export default function IrrigationPage() {
   const getTriggerBadge = (trigger: string) => {
     switch (trigger) {
       case 'automatic': return <Badge variant="info">Automatic</Badge>;
-      case 'manual': return <Badge variant="secondary">Manual</Badge>;
+     case 'manual': return <Badge variant="default">Manual</Badge>;
       case 'ai_recommendation': return <Badge variant="success">AI</Badge>;
       case 'emergency': return <Badge variant="danger">Emergency</Badge>;
       default: return <Badge>{trigger}</Badge>;
