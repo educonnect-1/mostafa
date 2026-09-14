@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { getIrrigationLogs, type IrrigationLog } from '@/lib/firestore';
+import { getIrrigationLogs } from '@/lib/firestore';
+import type { IrrigationLog } from '@/types';
 import { Card, CardHeader, CardTitle, CardContent, Badge, Skeleton } from '@/components/ui';
 import { Droplets, Clock, Calendar, CheckCircle, XCircle, AlertCircle, Play, Square } from 'lucide-react';
 
