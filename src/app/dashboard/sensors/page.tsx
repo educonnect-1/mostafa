@@ -10,7 +10,7 @@ import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
 export default function SensorsPage() {
   const { userData } = useAuth();
   const [sensorReading, setSensorReading] = useState<SensorReading | null>(null);
-  const [chartData, setChartData] useState<Array<{ 
+  const [chartData, setChartData] = useState<Array<{  
     time: string; 
     moisture: number; 
     temperature: number; 
